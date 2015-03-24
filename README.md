@@ -1,2 +1,2 @@
-# picocpu
-softcorecpu
+# create_mod
+Create VHDL module templates
