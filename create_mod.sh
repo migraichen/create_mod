@@ -99,38 +99,17 @@ echo "" >> run.do
 echo "# Load the simulator with optimizations turned off" >> run.do
 echo "vsim -novopt work.$1_tb" >> run.do
 echo "" >> run.do  
-echo "onerror {resume}" >> run.do
-echo "quietly WaveActivateNextPane {} 0" >> run.do
-echo "add wave -noupdate /$1_tb/rst_n" >> run.do
-echo "add wave -noupdate /$1_tb/sysclk" >> run.do
-echo "TreeUpdate [SetDefaultTree]" >> run.do
-echo "WaveRestoreCursors {{Cursor 1} {713066 ps} 0}" >> run.do
-echo "quietly wave cursor active 1" >> run.do
-echo "configure wave -namecolwidth 150" >> run.do
-echo "configure wave -valuecolwidth 100" >> run.do
-echo "configure wave -justifyvalue left" >> run.do
-echo "configure wave -signalnamewidth 0" >> run.do
-echo "configure wave -snapdistance 10" >> run.do
-echo "configure wave -datasetprefix 0" >> run.do
-echo "configure wave -rowmargin 4" >> run.do
-echo "configure wave -childrowmargin 2" >> run.do
-echo "configure wave -gridoffset 0" >> run.do
-echo "configure wave -gridperiod 1" >> run.do
-echo "configure wave -griddelta 40" >> run.do
-echo "configure wave -timeline 0" >> run.do
-echo "configure wave -timelineunits us" >> run.do
-echo "update" >> run.do
-echo "WaveRestoreZoom {0 ps} {2715648 ps}" >> run.do
+echo "do wave.do" >> run.do
 echo "" >> run.do
-echo "run $SimTime" >> run.do 
+echo "run \$SimTime" >> run.do 
 echo "" >> run.do
-echo "wave zoomrange 0 $SimTime" >> run.do
+echo "wave zoomrange 0 \$SimTime" >> run.do
 echo "" >> run.do
 echo "# End simulation" >> run.do
 echo "#quit -sim" >> run.do
 
 cd ..
-
+	
 echo "library ieee;" > $1.vhd
 echo "use ieee.std_logic_1164.all;" >> $1.vhd
 echo "use ieee.numeric_std.all;" >> $1.vhd
